@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101522">
+<title>KASBINO | Global Marketplace</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#101522;color:#fff}
+header{padding:20px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ffffff18}
+.logo{font-size:27px;font-weight:900;color:#d9b56d;letter-spacing:2px}
+nav{display:flex;gap:20px;align-items:center}
+a{color:#eee;text-decoration:none;font-size:14px}
+button{cursor:pointer;border:0;border-radius:9px;padding:11px 17px;font-weight:bold}
+.gold{background:#d9b56d;color:#101522}
+.outline{background:transparent;border:1px solid #d9b56d;color:#d9b56d}
+.hero{text-align:center;padding:85px 20px 65px;background:radial-gradient(ellipse at top,#29334b,#101522 70%)}
+.tag{color:#d9b56d;letter-spacing:3px;font-size:12px}
+h1{font-size:clamp(35px,7vw,65px);margin:20px 0}
+h1 span{color:#d9b56d}
+.hero p{color:#bdc3d1;line-height:1.8;max-width:580px;margin:0 auto 27px}
+.search{display:flex;max-width:540px;margin:auto;background:white;padding:6px;border-radius:12px}
+.search input{flex:1;min-width:0;border:0;padding:12px;color:#222;outline:none}
+.section{padding:55px 7%}
+.section h2{font-size:26px;margin-bottom:10px}
+.sub{color:#9da7ba;margin-bottom:25px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.card{background:#1b2435;border:1px solid #ffffff13;border-radius:14px;padding:23px}
+.card .emoji{font-size:32px;margin-bottom:15px}
+.card h3{margin-bottom:9px}
+.card p{font-size:14px;color:#aeb8c9;line-height:1.7}
+.card button{margin-top:17px}
+.categories{display:flex;flex-wrap:wrap;gap:12px}
+.categories button{background:#202b3e;color:#fff;border:1px solid #34415a}
+.categories button.active{background:#d9b56d;color:#101522}
+.notice{background:#252b38;border:1px solid #d9b56d55;padding:16px;border-radius:12px;color:#d9dce4;line-height:1.7;font-size:13px}
+footer{text-align:center;padding:30px;color:#8c96a8;border-top:1px solid #ffffff18;font-size:13px}
+@media(max-width:700px){
+header{padding:17px 5%}nav{gap:9px}nav a{display:none}
+.grid{grid-template-columns:1fr}
+.section{padding:40px 5%}
+.hero{padding:65px 17px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">KASBINO</div>
+  <nav>
+    <a href="#categories" data-en="Categories" data-fa="دسته‌بندی‌ها">Categories</a>
+    <a href="#market" data-en="Marketplace" data-fa="بازارگاه">Marketplace</a>
+    <button class="outline" onclick="toggleLanguage()" id="lang">فارسی</button>
+    <button class="gold" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})" data-en="Join us" data-fa="عضویت">Join us</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="tag">THE WORLD IN ONE MARKETPLACE</div>
+  <h1 data-en="Trade Without <span>Limits.</span>" data-fa="تجارت بدون <span>مرز.</span>">Trade Without <span>Limits.</span></h1>
+  <p data-en="Discover products, connect with talented professionals and grow your business around the world." data-fa="محصولات را پیدا کنید، با متخصصان ارتباط بگیرید و کسب‌وکار خود را در سراسر جهان گسترش دهید.">Discover products, connect with talented professionals and grow your business around the world.</p>
+  <div class="search">
+    <input id="searchInput" placeholder="Search products or services..." />
+    <button class="gold" onclick="searchMarket()" data-en="Search" data-fa="جستجو">Search</button>
+  </div>
+</section>
+
+<section class="section" id="categories">
+  <h2 data-en="Explore Categories" data-fa="دسته‌بندی‌ها">Explore Categories</h2>
+  <p class="sub" data-en="Everything you need, in one place." data-fa="هر آنچه نیاز دارید، در یک مکان.">Everything you need, in one place.</p>
+  <div class="categories">
+    <button class="active" onclick="filterCards('all',this)" data-en="All" data-fa="همه">All</button>
+    <button onclick="filterCards('goods',this)" data-en="Products" data-fa="کالاها">Products</button>
+    <button onclick="filterCards('services',this)" data-en="Services" data-fa="خدمات">Services</button>
+  </div>
+</section>
+
+<section class="section" id="market">
+  <h2 data-en="Discover the Marketplace" data-fa="بازارگاه را کشف کنید">Discover the Marketplace</h2>
+  <p class="sub" data-en="A world of opportunities starts here." data-fa="دنیایی از فرصت‌ها از اینجا آغاز می‌شود.">A world of opportunities starts here.</p>
+  <div class="grid" id="cards">
+    <article class="card" data-type="goods">
+      <div class="emoji">📦</div>
+      <h3 data-en="Global Products" data-fa="محصولات جهانی">Global Products</h3>
+      <p data-en="Discover products from sellers around the world." data-fa="محصولات فروشندگان سراسر جهان را کشف کنید.">Discover products from sellers around the world.</p>
+      <button class="outline" onclick="alert('Marketplace product listings are coming soon.')" data-en="Explore" data-fa="مشاهده">Explore</button>
+    </article>
+    <article class="card" data-type="services">
+      <div class="emoji">💼</div>
+      <h3 data-en="Professional Services" data-fa="خدمات تخصصی">Professional Services</h3>
+      <p data-en="Find designers, developers, translators and more." data-fa="طراحان، برنامه‌نویسان، مترجمان و متخصصان را پیدا کنید.">Find designers, developers, translators and more.</p>
+      <button class="outline" onclick="alert('Service listings are coming soon.')" data-en="Explore" data-fa="مشاهده">Explore</button>
+    </article>
+    <article class="card" data-type="services">
+      <div class="emoji">🌐</div>
+      <h3 data-en="Become a Seller" data-fa="فروشنده شوید">Become a Seller</h3>
+      <p data-en="Showcase your products and services to the world." data-fa="کالاها و خدمات خود را به جهان معرفی کنید.">Showcase your products and services to the world.</p>
+      <button class="gold" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})" data-en="Get Started" data-fa="شروع کنید">Get Started</button>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="join">
+  <div class="notice">
+    <strong>KASBINO is growing.</strong><br>
+    <span data-en="This is an early preview. Real listings, user accounts and secure marketplace payments will be activated after setup and verification." data-fa="این نسخه اولیه است. ثبت آگهی واقعی، حساب کاربران و پرداخت امن پس از راه‌اندازی و تأیید سرویس‌ها فعال خواهند شد.">This is an early preview. Real listings, user accounts and secure marketplace payments will be activated after setup and verification.</span>
+  </div>
+</section>
+
+<footer>© 2026 KASBINO — Global Marketplace</footer>
+
+<script>
+let language='en';
+function toggleLanguage(){
+  language=language==='en'?'fa':'en';
+  document.documentElement.lang=language;
+  document.documentElement.dir=language==='fa'?'rtl':'ltr';
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    el.innerHTML=el.dataset[language];
+  });
+  document.getElementById('lang').textContent=language==='en'?'فارسی':'English';
+  document.getElementById('searchInput').placeholder=language==='en'?'Search products or services...':'جستجوی کالا یا خدمات...';
+}
+function filterCards(type,button){
+  document.querySelectorAll('.categories button').forEach(b=>b.classList.remove('active'));
+  button.classList.add('active');
+  document.querySelectorAll('#cards .card').forEach(card=>{
+    card.style.display=type==='all'||card.dataset.type===type?'block':'none';
+  });
+}
+function searchMarket(){
+  let q=document.getElementById('searchInput').value.trim().toLowerCase();
+  document.querySelectorAll('#cards .card').forEach(card=>{
+    card.style.display=!q||card.innerText.toLowerCase().includes(q)?'block':'none';
+  });
+  document.getElementById('market').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
